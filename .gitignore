@@ -1,0 +1,30 @@
+# Dependencias
+node_modules/
+npm-debug.log*
+
+# Variables de entorno
+.env
+.env.*
+!.env.example
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Build
+dist/
+build/
+target/
+
+# Docker / temporales
+*.tar
+
+# Llaves y credenciales
+*.pem
+*.key
+*.crt
+aws-credentials
