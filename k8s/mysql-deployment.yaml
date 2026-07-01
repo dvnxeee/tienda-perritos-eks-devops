@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: 627934904228.dkr.ecr.us-east-1.amazonaws.com/tienda-perritos-db:v1.0.0
+          image: 627934904228.dkr.ecr.us-east-1.amazonaws.com/tienda-perritos-db:58605d6
           imagePullPolicy: Always
           ports:
             - containerPort: 3306
