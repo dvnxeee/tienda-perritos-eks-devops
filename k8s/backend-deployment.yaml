@@ -15,7 +15,8 @@ spec:
     spec:
       containers:
         - name: backend
-          image: 542768639545.dkr.ecr.us-east-1.amazonaws.com/tienda-backend:eks-v1 # Colocar uri de tu imagen en ECR
+          image: 627934904228.dkr.ecr.us-east-1.amazonaws.com/tienda-perritos-backend:v1.0.0
+          imagePullPolicy: Always
           ports:
             - containerPort: 3001
           env:
@@ -38,9 +39,11 @@ spec:
             requests:
               cpu: "100m"
               memory: "128Mi"
+              ephemeral-storage: "512Mi"
             limits:
               cpu: "500m"
               memory: "512Mi"
+              ephemeral-storage: "1Gi"
 
           # HEALTH CHECKS (PROBES)
           readinessProbe:
