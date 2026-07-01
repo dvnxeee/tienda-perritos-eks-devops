@@ -3,17 +3,19 @@ const cors = require("cors");
 const mysql = require("mysql2/promise");
 
 const app = express();
+app.disable("x-powered-by");
 const PORT = process.env.PORT || 3001;
 
 const {
-  DB_HOST = tienda-db, // acá resuelve internamente en eks
+  DB_HOST = "tienda-db", // acá resuelve internamente en eks
   DB_USER = "root",
   DB_PASSWORD = "admin123",
   DB_NAME = "tienda_perritos",
   DB_PORT = 3306,
+  CORS_ORIGIN = "http://localhost:8080",
 } = process.env;
 
-app.use(cors());
+app.use(cors({ origin: CORS_ORIGIN }));
 app.use(express.json());
 
 let pool;
@@ -26,7 +28,7 @@ async function initDb() {
       user: DB_USER,
       password: DB_PASSWORD,
       database: DB_NAME,
-      port: DB_PORT,
+      port: Number(DB_PORT),
       waitForConnections: true,
       connectionLimit: 10,
       queueLimit: 0,
