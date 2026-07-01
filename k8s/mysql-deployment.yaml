@@ -15,7 +15,8 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: 542768639545.dkr.ecr.us-east-1.amazonaws.com/tienda-db:eks-v1 # Colocar uri de tu imagen en ECR
+          image: 627934904228.dkr.ecr.us-east-1.amazonaws.com/tienda-perritos-db:v1.0.0
+          imagePullPolicy: Always
           ports:
             - containerPort: 3306
           env:
@@ -24,6 +25,15 @@ spec:
                 secretKeyRef:
                   name: mysql-secret
                   key: MYSQL_ROOT_PASSWORD
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+              ephemeral-storage: "1Gi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+              ephemeral-storage: "2Gi"
           volumeMounts:
             - name: data
               mountPath: /var/lib/mysql
